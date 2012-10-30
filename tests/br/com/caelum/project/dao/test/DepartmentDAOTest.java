@@ -33,7 +33,6 @@ public class DepartmentDAOTest {
 		Employee michael = new Employee();
 		michael.setName("Michael");
 		
-		
 		Department department = new Department();
 		department.setName("IT");
 		john.setDepartment(department);

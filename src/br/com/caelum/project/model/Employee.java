@@ -2,6 +2,7 @@ package br.com.caelum.project.model;
 
 import java.util.Collection;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,12 +25,15 @@ public class Employee {
 	@OneToOne
 	private ParkingSpace parkingSpace;
 	
+	private String name;
+	
 	@ManyToMany
-	@JoinTable(name="EMP_PROJ", joinColumns=@JoinColumn(name="EM_ID"), inverseJoinColumns=@JoinColumn(name="PROJ_ID"))
+	@JoinTable(name="Employee_Project", joinColumns=@JoinColumn(name="employee_id"), inverseJoinColumns=@JoinColumn(name="project_id"))
 	private Collection<Project> projects;
 		
-	private String name;
-
+	@Embedded
+	private Address address;
+	
 	public Department getDepartment() {
 		return department;
 	}
@@ -64,6 +68,14 @@ public class Employee {
 
 	public void setProjects(Collection<Project> projects) {
 		this.projects = projects;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 }
