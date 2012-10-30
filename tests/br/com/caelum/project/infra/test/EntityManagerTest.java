@@ -17,4 +17,5 @@ public class EntityManagerTest {
 		
 		assertNotNull(entityManager);
 	}
+	
 }
